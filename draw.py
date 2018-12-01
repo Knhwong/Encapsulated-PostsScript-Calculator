@@ -301,6 +301,7 @@ def postfixer(draw1):
     global final
     global drawer
     global variableholder
+    print(draw)
     for index, u in enumerate(draw):
         if u == '*':
             resultpost.append(float(draw[index+1]) * float(draw[index+2]))
@@ -323,6 +324,7 @@ def postfixer(draw1):
             variableholder.append(draw[(index+1)])
         elif u == "color":
             pointer=random.randint(1111,2222)
+            print(draw[(index+1)])
             final[pointer]=line(draw, index)
             drawer.append(pointer)
             resultpost.append(pointer)
@@ -439,8 +441,11 @@ def cal(stuff):
     input=stuff
     index=1
     draw1 =[]
-    r1=0
-    r2=0
+    range1=0
+    range2=0
+    var=0
+    global variables
+    global variableholder
     global jarjar
     while index < len(input):
         if input[index] == "(":
@@ -454,9 +459,11 @@ def cal(stuff):
         elif input[index] == "for":
             range1=int(input[(index+2)])
             range2=int(input[(index+3)])
-            r1=index+2
-            r2=index+3
+            var=(input[(index+1)])
+            variables[var]=range1
+            variableholder.append(var)
             for I in range(range1,range2):
+                variables[var]=I
                 indexreturn, result =cal(input[index:])
                 for x in result:
                     draw1.append(x)
@@ -475,8 +482,6 @@ stuff = stuff.replace(")", " ) ")
 stuff = stuff.split()
 stuff.insert(0, "(")
 stuff.append(")")
-print("%!PS-Adobe-3.0 EPSF-3.0")
-print("%%BoundingBox: 0 0 1239 1752")
 hah=cal(stuff)
 for x in drawer:
     final[x].drawing()
