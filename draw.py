@@ -315,7 +315,7 @@ def postfixer(draw1):
             holder=math.cos(holder)
             resultpost.append(holder)
         elif u == "sin":
-            holder=math.radians(draw[(index+1)])
+            holder=math.radians(float(draw[(index+1)]))
             holder=math.sin(holder)
             resultpost.append(holder)
         elif u == ":=":
@@ -337,8 +337,8 @@ def postfixer(draw1):
                 final[index2].rotation(rotate)
                 resultpost.append(index2)
         elif u == "translate":
-            translatex=float(draw[-1])
-            translatey=float(draw[-2])
+            translatex=float(draw[-2])
+            translatey=float(draw[-1])
             for index2 in draw[1:-2]:
                 final[index2].translate(translatex, translatey)
                 resultpost.append(index2)
@@ -431,46 +431,49 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
+
     #print(draw)
     #print(resultpost)
     return resultpost
 
 def cal(stuff):
-    input=stuff
+    lol=stuff
     index=1
     draw1 =[]
     range1=0
     range2=0
     var=0
+
     global variables
     global variableholder
     global jarjar
-    while index < len(input):
-        if input[index] == "(":
-            indexreturn, result =cal(input[index:])
+    while index < len(lol):
+        if lol[index] == "(":
+            indexreturn, result =cal(lol[index:])
             index = index + indexreturn
             for x in result:
                 draw1.append(x)
-        elif input[index] == ")":
+        elif lol[index] == ")":
             result = postfixer(draw1)
             return index, result
-        elif input[index] == "for":
-            range1=int(input[(index+2)])
-            range2=int(input[(index+3)])
-            var=(input[(index+1)])
+        elif lol[index] == "for":
+            range1=int(lol[(index+2)])
+            range2=int(lol[(index+3)])
+            var=(lol[(index+1)])
             variables[var]=range1
             variableholder.append(var)
-            for I in range(range1,range2):
+            for I in range(range1,(range2+1)):
                 variables[var]=I
-                indexreturn, result =cal(input[index:])
+                print(type(lol[index:]))
+                indexreturn, result =cal(lol[index:])
                 for x in result:
                     draw1.append(x)
             index = index + indexreturn
-        elif (input[index] in variableholder) and (input[(index-1)]!=":="):
-            input[index]=variables[input[index]]
-            draw1.append(input[index])
+        elif (lol[index] in variableholder) and (lol[(index-1)]!=":="):
+            lol[index]=variables[lol[index]]
+            draw1.append(lol[index])
         else:
-            draw1.append(input[index])
+            draw1.append(lol[index])
         index= index+1
 
 
@@ -485,5 +488,3 @@ print('%%BoundingBox: 0 0 1239 1752')
 hah=cal(stuff)
 for x in drawer:
     final[x].drawing()
-
-
