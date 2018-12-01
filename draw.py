@@ -95,7 +95,7 @@ class rectangle(line):
         self.liney3=self.liney3*scale
         self.linex4=self.linex4*scale
         self.liney4=self.liney4*scale
-class filledrectangle(line):
+class filledrectangle(rectangle):
     def drawing(self):
         print(self.linex1, self.liney1, "moveto")
         print(self.linex2, self.liney2, "lineto")
@@ -276,13 +276,13 @@ class color:
         self.r = draw[(index+1)]
         self.g = draw[(index+2)]
         self.b = draw[(index+3)]
-    def drawing():
-        print(r, g, b, "setrgbcolor")
+    def drawing(self):
+        print(self.r, self.g, self.b, "setrgbcolor")
 class linewidth:
     def __init__(self, draw, index):
         self.w = draw[(index+1)]
-    def drawing():
-        print(W, "setlinewidth")
+    def drawing(self):
+        print(self.w, "setlinewidth")
 
 
 def postfixer(draw1):
@@ -324,13 +324,12 @@ def postfixer(draw1):
             variableholder.append(draw[(index+1)])
         elif u == "color":
             pointer=random.randint(1111,2222)
-            print(draw[(index+1)])
-            final[pointer]=line(draw, index)
+            final[pointer]=color(draw, index)
             drawer.append(pointer)
             resultpost.append(pointer)
         elif u == "linewidth":
             pointer=random.randint(1111,2222)
-            final[pointer]=line(draw, index)
+            final[pointer]=linewidth(draw, index)
             drawer.append(pointer)
             resultpost.append(pointer)
         elif u == "rotate":
@@ -465,6 +464,7 @@ def cal(stuff):
             for I in range(range1,range2):
                 variables[var]=I
                 indexreturn, result =cal(input[index:])
+                print(result)
                 for x in result:
                     draw1.append(x)
             index = index + indexreturn
