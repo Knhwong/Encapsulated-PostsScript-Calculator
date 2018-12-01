@@ -464,7 +464,6 @@ def cal(stuff):
             variableholder.append(var)
             for I in range(range1,(range2+1)):
                 variables[var]=I
-                print(type(lol[index:]))
                 indexreturn, result =cal(lol[index:])
                 for x in result:
                     draw1.append(x)
