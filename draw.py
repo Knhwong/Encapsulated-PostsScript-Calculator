@@ -301,7 +301,6 @@ def postfixer(draw1):
     global final
     global drawer
     global variableholder
-    print(draw)
     for index, u in enumerate(draw):
         if u == '*':
             resultpost.append(float(draw[index+1]) * float(draw[index+2]))
@@ -464,7 +463,6 @@ def cal(stuff):
             for I in range(range1,range2):
                 variables[var]=I
                 indexreturn, result =cal(input[index:])
-                print(result)
                 for x in result:
                     draw1.append(x)
             index = index + indexreturn
@@ -482,10 +480,10 @@ stuff = stuff.replace(")", " ) ")
 stuff = stuff.split()
 stuff.insert(0, "(")
 stuff.append(")")
+print('%!PS-Adobe-3.0 EPSF-3.0')
+print('%%BoundingBox: 0 0 1239 1752')
 hah=cal(stuff)
 for x in drawer:
     final[x].drawing()
 
 
-#draw = sys.stdin.read()
-#draw = nlist.split()
