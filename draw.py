@@ -1,6 +1,7 @@
 import sys
 import math
 import random
+import pdb
 printing=[]
 variables={}
 variable=0
@@ -288,6 +289,7 @@ class linewidth:
 def postfixer(draw1):
     draw=draw1
     index=0
+
     resultpost=[]
     translatex=0
     translatey=0
@@ -302,6 +304,9 @@ def postfixer(draw1):
     global drawer
     global variableholder
     for index, u in enumerate(draw):
+        if u in variableholder and (draw[(index-1)]!=":="):
+            draw[index]=variables[draw[index]]
+    for index, u in enumerate(draw):
         if u == '*':
             resultpost.append(float(draw[index+1]) * float(draw[index+2]))
         elif u == '+':
@@ -314,6 +319,10 @@ def postfixer(draw1):
             holder=math.radians(draw[(index+1)])
             holder=math.cos(holder)
             resultpost.append(holder)
+        elif u == 'for':
+            for index2 in draw[3:]:
+                final[index2].rotation(rotate)
+                resultpost.append(index2)
         elif u == "sin":
             holder=math.radians(float(draw[(index+1)]))
             holder=math.sin(holder)
@@ -431,9 +440,6 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
-
-    #print(draw)
-    #print(resultpost)
     return resultpost
 
 def cal(stuff):
@@ -464,12 +470,11 @@ def cal(stuff):
             variableholder.append(var)
             for I in range(range1,(range2+1)):
                 variables[var]=I
-                indexreturn, result =cal(lol[index:])
+                #print(cal[index:])
+                indexreturn, result =cal(lol[(index+3):])
                 for x in result:
                     draw1.append(x)
             index = index + indexreturn
-        elif (lol[index] in variableholder) and (lol[(index-1)]!=":="):
-            lol[index]=variables[lol[index]]
             draw1.append(lol[index])
         else:
             draw1.append(lol[index])
@@ -484,6 +489,7 @@ stuff.insert(0, "(")
 stuff.append(")")
 print('%!PS-Adobe-3.0 EPSF-3.0')
 print('%%BoundingBox: 0 0 1239 1752')
+#pdb.set_trace()
 hah=cal(stuff)
 for x in drawer:
     final[x].drawing()
