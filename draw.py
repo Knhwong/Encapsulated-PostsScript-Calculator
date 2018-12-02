@@ -449,10 +449,10 @@ def cal(stuff):
     draw1 =[]
     range1=0
     range2=0
-    #print(lol)
     global variables
     global variableholder
     global jarjar
+    global drawer
     while index < len(lol):
         if lol[index] == "(":
             indexreturn, result =cal(lol[index:])
@@ -475,9 +475,24 @@ def cal(stuff):
                     for x in result:
                         draw1.append(x)
                 index = index + (indexreturn+4)
+            elif range1 > range2:
+                    indexreturn = calalt(lol[index:])
+                    return (indexreturn+1), 'wat'
         else:
             draw1.append(lol[index])
         index= index+1
+
+def calalt(lol):
+    index=1
+    while index <= len(lol):
+        if lol[index] == "(":
+            indexreturn = calalt(lol[index:])
+            index =  index + indexreturn
+        elif lol[index] == ")":
+            return index
+        index = index +1 
+        
+        
 
 stuff = sys.stdin.read()
 stuff = stuff.replace("(", " ( ")
