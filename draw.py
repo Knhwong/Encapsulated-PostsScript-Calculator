@@ -289,7 +289,6 @@ class linewidth:
 def postfixer(draw1):
     draw=draw1
     index=0
-
     resultpost=[]
     translatex=0
     translatey=0
@@ -449,7 +448,6 @@ def cal(stuff):
     range1=0
     range2=0
     var=0
-
     global variables
     global variableholder
     global jarjar
@@ -485,11 +483,13 @@ stuff = sys.stdin.read()
 stuff = stuff.replace("(", " ( ")
 stuff = stuff.replace(")", " ) ")
 stuff = stuff.split()
-stuff.insert(0, "(")
-stuff.append(")")
+reach=len(stuff)
+hah=0
+for x in range(5):
+    stuff.insert(0, "(")
+    stuff.append(")")
 print('%!PS-Adobe-3.0 EPSF-3.0')
 print('%%BoundingBox: 0 0 1239 1752')
-#pdb.set_trace()
-hah=cal(stuff)
+cal(stuff)
 for x in drawer:
     final[x].drawing()
