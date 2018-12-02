@@ -472,16 +472,24 @@ def cal(stuff):
             var=(lol[(index+1)])
             variables[var]=range1
             variableholder.append(var)
+            forindex=index+4
+            index = index +1
+            lol.insert(index+3, "(")
+            #index = index + 1 
+            lol.insert(-1, ")")
             if range1 < range2:
+                hodl=1
                 for I in range(range1,(range2+1)):
+                    hodl=hodl+1
                     variables[var]=I
-                    indexreturn, result =cal(lol[(index+4):-1])
+                    indexreturn, result =cal(lol[(forindex):-1])
                     for x in result:
                         draw1.append(x)
+                indexreturn=indexreturn-hodl
                 index = index + (indexreturn+4)
             elif range1 > range2:
                     indexreturn = calalt(lol[index:])
-                    return (indexreturn+1), 'wat'
+                    return (indexreturn+1), '0'
         else:
             draw1.append(lol[index])
         index= index+1
