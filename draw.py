@@ -433,7 +433,7 @@ def postfixer(draw1):
             resultpost.append(pointer)
         elif u == "filledsector":
             pointer=random.randint(1112,2222)
-            final[pointer]=sector(draw, index)
+            final[pointer]=filledsector(draw, index)
             drawer.append(pointer)
             resultpost.append(pointer)
         elif u == "group":
