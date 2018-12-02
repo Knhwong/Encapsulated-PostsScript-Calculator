@@ -439,8 +439,8 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
-        elif float(u) > 1000:
-            resultpost.append(u)
+        #elif float(u) > 1000:
+         #  resultpost.append(u)
     return resultpost
 
 def cal(stuff):
@@ -477,6 +477,7 @@ def cal(stuff):
         else:
             draw1.append(lol[index])
         index= index+1
+        print(index)
 
 
 stuff = sys.stdin.read()
@@ -488,6 +489,8 @@ stuff.insert(0, "(")
 stuff.append(")")
 print('%!PS-Adobe-3.0 EPSF-3.0')
 print('%%BoundingBox: 0 0 1239 1752')
-hah=cal(stuff)
-for x in drawer:
-    final[x].drawing()
+try:
+    hah=cal(stuff)
+finally:
+    for x in drawer:
+        final[x].drawing()
