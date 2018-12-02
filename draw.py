@@ -319,7 +319,7 @@ def postfixer(draw1):
             holder=math.cos(holder)
             resultpost.append(holder)
         elif u == 'for':
-            for index2 in draw[3:]:
+            for index2 in draw:
                 final[index2].rotation(rotate)
                 resultpost.append(index2)
         elif u == "sin":
@@ -439,6 +439,8 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
+        elif float(u) > 1000:
+            resultpost.append(u)
     return resultpost
 
 def cal(stuff):
@@ -447,7 +449,7 @@ def cal(stuff):
     draw1 =[]
     range1=0
     range2=0
-    var=0
+    #print(lol)
     global variables
     global variableholder
     global jarjar
@@ -468,12 +470,10 @@ def cal(stuff):
             variableholder.append(var)
             for I in range(range1,(range2+1)):
                 variables[var]=I
-                #print(cal[index:])
-                indexreturn, result =cal(lol[(index+3):])
+                indexreturn, result =cal(lol[(index+4):-1])
                 for x in result:
                     draw1.append(x)
-            index = index + indexreturn
-            draw1.append(lol[index])
+            index = index + (indexreturn+4)
         else:
             draw1.append(lol[index])
         index= index+1
@@ -484,12 +484,10 @@ stuff = stuff.replace("(", " ( ")
 stuff = stuff.replace(")", " ) ")
 stuff = stuff.split()
 reach=len(stuff)
-hah=0
-for x in range(5):
-    stuff.insert(0, "(")
-    stuff.append(")")
+stuff.insert(0, "(")
+stuff.append(")")
 print('%!PS-Adobe-3.0 EPSF-3.0')
 print('%%BoundingBox: 0 0 1239 1752')
-cal(stuff)
+hah=cal(stuff)
 for x in drawer:
     final[x].drawing()
