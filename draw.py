@@ -472,12 +472,12 @@ def cal(stuff):
             var=(lol[(index+1)])
             variables[var]=range1
             variableholder.append(var)
-            forindex=index+4
-            index = index +1
-            lol.insert(index+3, "(")
-            #index = index + 1 
-            lol.insert(-1, ")")
             if range1 < range2:
+                forindex=index+4
+                index = index +1
+                lol.insert(index+3, "(")
+                #index = index + 1 
+                lol.insert(-1, ")")
                 hodl=1
                 for I in range(range1,(range2+1)):
                     hodl=hodl+1
