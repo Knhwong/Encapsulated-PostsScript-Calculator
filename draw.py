@@ -468,17 +468,16 @@ def cal(stuff):
             var=(lol[(index+1)])
             variables[var]=range1
             variableholder.append(var)
-            for I in range(range1,(range2+1)):
-                variables[var]=I
-                indexreturn, result =cal(lol[(index+4):-1])
-                for x in result:
-                    draw1.append(x)
-            index = index + (indexreturn+4)
+            if range1 < range2:
+                for I in range(range1,(range2+1)):
+                    variables[var]=I
+                    indexreturn, result =cal(lol[(index+4):-1])
+                    for x in result:
+                        draw1.append(x)
+                index = index + (indexreturn+4)
         else:
             draw1.append(lol[index])
         index= index+1
-        
-
 
 stuff = sys.stdin.read()
 stuff = stuff.replace("(", " ( ")
