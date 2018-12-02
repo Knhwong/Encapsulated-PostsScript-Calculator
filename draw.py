@@ -265,7 +265,7 @@ class sector:
         print(self.centerx, self.centery, self.radius, self.angle1, self.angle2, "arc")
         print(self.centerx, self.centery, "lineto")
         print("stroke")
-class filledsector:
+class filledsector(sector):
     def drawing(self):
         print(self.centerx, self.centery, "moveto")
         print(self.vertice1x, self.vertice1y, "lineto")
@@ -315,7 +315,7 @@ def postfixer(draw1):
         elif u == "/":
             resultpost.append(float(draw[index+1]) / float(draw[index+2]))
         elif u == "cos":
-            holder=math.radians(draw[(index+1)])
+            holder=math.radians(float(draw[(index+1)]))
             holder=math.cos(holder)
             resultpost.append(holder)
         elif u == 'for':
