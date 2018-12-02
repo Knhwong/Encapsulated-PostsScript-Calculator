@@ -340,7 +340,11 @@ def postfixer(draw1):
             drawer.append(pointer)
             resultpost.append(pointer)
         elif u == "rotate":
-            rotate=math.radians(float(draw[-1]))
+            rotate=(float(draw[-1]))
+            if abs(rotate) > 360:
+                r=rotate//360
+                rotate=rotate-(r*360)
+            rotate=math.radians(rotate)
             for index2 in draw[1:-1]:
                 final[index2].rotation(rotate)
                 resultpost.append(index2)
