@@ -459,11 +459,13 @@ def cal(stuff):
     draw1 =[]
     range1=0
     range2=0
+    indexreturn=0
     global variables
     global variableholder
     global jarjar
     global drawer
     while index < len(lol):
+        jarjar=lol[index]
         if lol[index] == "(":
             indexreturn, result =cal(lol[index:])
             index = index + indexreturn
@@ -473,7 +475,6 @@ def cal(stuff):
             result = postfixer(draw1)
             return index, result
         elif lol[index] == "for":
-            jarjar=lol
             range1=int(lol[(index+2)])
             range2=int(lol[(index+3)])
             var=(lol[(index+1)])
@@ -481,19 +482,17 @@ def cal(stuff):
             variableholder.append(var)
             if range1 < range2:
                 forindex=index+4
-                indexreturn=calalt(lol[index:])
                 lol.insert(index+4, "(")
                 index = index + 1 
-                lol.insert((indexreturn+1), ")")
-                hodl=1
+                lol.insert((-1), ")")
                 for I in range(range1,(range2+1)):
-                    hodl=hodl+1
+                    I = I
                     variables[var]=I
                     indexreturn, result =cal(lol[(forindex):-1])
                     for x in result:
                         draw1.append(x)
-                indexreturn=indexreturn-hodl
-                index = index + (indexreturn+4)
+                indexreturn=indexreturn
+                index = index + (indexreturn)
             elif range1 > range2:
                     indexreturn = calalt(lol[index:])
                     return (indexreturn+1), '0'
