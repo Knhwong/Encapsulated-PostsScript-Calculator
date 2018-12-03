@@ -473,6 +473,7 @@ def cal(stuff):
             result = postfixer(draw1)
             return index, result
         elif lol[index] == "for":
+            jarjar=lol
             range1=int(lol[(index+2)])
             range2=int(lol[(index+3)])
             var=(lol[(index+1)])
@@ -480,10 +481,11 @@ def cal(stuff):
             variableholder.append(var)
             if range1 < range2:
                 forindex=index+4
-                lol.insert(index+3, "(")
+                indexreturn=calalt(lol[index:])
+                lol.insert(index+4, "(")
                 index = index + 1 
-                lol.insert(-1, ")")
-                hodl=0
+                lol.insert((indexreturn+1), ")")
+                hodl=1
                 for I in range(range1,(range2+1)):
                     hodl=hodl+1
                     variables[var]=I
