@@ -233,6 +233,10 @@ class sector:
         self.radius=float(draw[(index+3)])
         self.angle1=float(draw[(index+4)])
         self.angle2=float(draw[(index+5)])
+        while self.angle2 < 0:
+            self.angle2 = self.angle2 + 360
+        while self.angle1 < 0:
+            self.angle1 = self.angle1 + 360
         self.calculate()
     def calculate(self):
         self.angle1rads=math.radians(self.angle1)
@@ -257,6 +261,8 @@ class sector:
         self.vertice1y=self.vertice1y+translatey
     def scale(self, scale):
         self.radius=self.radius*scale
+        self.centerx = self.centerx*scale
+        self.centery = self.centery*scale
         self.vertice1x=(self.radius)*math.sin(((math.pi/2)-self.angle1rads))+self.centerx
         self.vertice1y=(self.radius)*math.sin(self.angle1rads)+self.centery
     def drawing(self):
@@ -274,14 +280,14 @@ class filledsector(sector):
         print("fill")
 class color:
     def __init__(self, draw, index):
-        self.r = draw[(index+1)]
-        self.g = draw[(index+2)]
-        self.b = draw[(index+3)]
+        self.r = float(draw[(index+1)])
+        self.g = float(draw[(index+2)])
+        self.b = float(draw[(index+3)])
     def drawing(self):
         print(self.r, self.g, self.b, "setrgbcolor")
 class linewidth:
     def __init__(self, draw, index):
-        self.w = draw[(index+1)]
+        self.w = float(draw[(index+1)])
     def drawing(self):
         print(self.w, "setlinewidth")
 
@@ -474,11 +480,10 @@ def cal(stuff):
             variableholder.append(var)
             if range1 < range2:
                 forindex=index+4
-                index = index +1
                 lol.insert(index+3, "(")
-                #index = index + 1 
+                index = index + 1 
                 lol.insert(-1, ")")
-                hodl=1
+                hodl=0
                 for I in range(range1,(range2+1)):
                     hodl=hodl+1
                     variables[var]=I
