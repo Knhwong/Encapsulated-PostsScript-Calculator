@@ -449,9 +449,8 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
-        elif type(u) == int:
-            if int(u) > 1111:
-                resultpost.append(u)
+        #elif float(u) > 1000:
+         #  resultpost.append(u)
     return resultpost
 
 def cal(stuff):
@@ -461,7 +460,6 @@ def cal(stuff):
     range1=0
     range2=0
     indexreturn=0
-    J=0
     global variables
     global variableholder
     global jarjar
@@ -483,37 +481,31 @@ def cal(stuff):
             variables[var]=range1
             variableholder.append(var)
             if range1 < range2:
-                holder=calalt(lol[(index+3):])+index+4
-                lol.insert(holder, ")")
-                j=index+4
-                lol.insert(j, "group")
-                lol.insert(j, "(")
                 for I in range(range1,(range2+1)):
+                    I = I
                     variables[var]=I
                     indexreturn, result =cal(lol[(index+4):])
                     for x in result:
                         draw1.append(x)
-                index = index + holder + 2
+                index = index + (indexreturn+6)
             elif range1 > range2:
-                    indexreturn = calalt(lol[(index+3):])
-                    return (indexreturn+4+index), '0'
+                    indexreturn = calalt(lol[index:])
+                    return (indexreturn), '0'
         else:
             draw1.append(lol[index])
         index= index+1
-    return (len(lol)), 'wat'
-test=['(','for','1','2','(','line','5','5','5','5',')',')','(','linewidth','5',')']
-def calalt(lol):
 
+def calalt(lol):
     index=1
     while index <= len(lol):
         if lol[index] == "(":
             indexreturn = calalt(lol[index:])
             index =  index + indexreturn
         elif lol[index] == ")":
-            return (index)
+            return index
         index = index +1 
         
-
+        
 
 stuff = sys.stdin.read()
 stuff = stuff.replace("(", " ( ")
