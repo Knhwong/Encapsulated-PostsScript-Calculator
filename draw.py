@@ -449,9 +449,9 @@ def postfixer(draw1):
             for x in draw:
                 if x != "group":
                     resultpost.append(x)
-        elif type(u) == int:
-            if int(u) > 1111:
-                resultpost.append(u)
+       # elif type(u) == int:
+            #if int(u) > 1111:
+                #resultpost.append(u)
     return resultpost
 
 def cal(stuff):
@@ -491,6 +491,7 @@ def cal(stuff):
                 for I in range(range1,(range2+1)):
                     variables[var]=I
                     indexreturn, result =cal(lol[(index+4):])
+                    variables[var]=range2
                     for x in result:
                         draw1.append(x)
                 index = index + holder + 2
