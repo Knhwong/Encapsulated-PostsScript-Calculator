@@ -255,6 +255,19 @@ class sector:
     def rotation(self, rotate):
         self.angle1=self.angle1+math.degrees(rotate)
         self.angle2=self.angle2+math.degrees(rotate)
+        while self.angle2 >= 360:
+            r=self.angle2//360
+            self.angle2=self.angle2-(r*360)
+        while self.angle1 >= 360:
+            r=self.angle1//360
+            self.angle1=self.angle1-(r*360)
+        while self.angle2 > 360:
+            r=angle2//360
+            angle2=angle2-(r*360)
+        while self.angle2 < 0:
+            self.angle2 = self.angle2 + 360
+        while self.angle1 < 0:
+            self.angle1 = self.angle1 + 360
         self.centerxrot= self.centerx*(math.cos(rotate)) - self.centery*(math.sin(rotate))
         self.centeryrot= self.centerx*(math.sin(rotate)) + self.centery*(math.cos(rotate))
         self.vertice1xrot= self.vertice1x*(math.cos(rotate)) - self.vertice1y*(math.sin(rotate))
