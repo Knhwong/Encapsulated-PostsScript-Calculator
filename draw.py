@@ -263,8 +263,8 @@ class sector:
         self.radius=self.radius*scale
         self.centerx = self.centerx*scale
         self.centery = self.centery*scale
-        self.vertice1x=(self.radius)*math.sin(((math.pi/2)-self.angle1rads))+self.centerx
-        self.vertice1y=(self.radius)*math.sin(self.angle1rads)+self.centery
+        self.vertice1x=self.vertice1x*scale
+        self.vertice1y=self.vertice1y*scale
     def drawing(self):
         print(self.centerx, self.centery, "moveto")
         print(self.vertice1x, self.vertice1y, "lineto")
