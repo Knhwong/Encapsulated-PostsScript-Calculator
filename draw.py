@@ -512,7 +512,7 @@ def cal(stuff):
             variables[var]=range1
             variableholder.append(var)
             if range1 < range2:
-                holder=calalt(lol[(index+4):])+index+4
+                holder=calalt(lol[(index+3):])+index+4
                 lol.insert(holder, ")")
                 j=index+4
                 lol.insert(j, "group")
