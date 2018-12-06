@@ -525,9 +525,8 @@ def cal(stuff):
             draw1.append(lol[index])
         index= index+1
     return (len(lol)), 'wat'
-test=['(','for','1','2','(','line','5','5','5','5',')',')','(','linewidth','5',')']
-def calalt(lol):
 
+def calalt(lol):
     index=1
     while index <= len(lol):
         if lol[index] == "(":
