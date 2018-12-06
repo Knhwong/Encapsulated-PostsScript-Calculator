@@ -484,6 +484,7 @@ def cal(stuff):
     range2=0
     indexreturn=0
     J=0
+    resultholder=['group']
     global variables
     global variableholder
     global jarjar
@@ -515,8 +516,8 @@ def cal(stuff):
                     indexreturn, result =cal(lol[(index+4):])
                     variables[var]=range2
                     for x in result:
-                        draw1.append(x)
-                return holder-1, 'wat'
+                        resultholder.append(x)
+                return holder, resultholder
             elif range1 > range2:
                 indexreturn = calalt(lol[(index+3):])
                 return (indexreturn+3+index), '0'
