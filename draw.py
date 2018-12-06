@@ -308,9 +308,9 @@ class filledsector(sector):
         print("fill")
 class color:
     def __init__(self, draw, index):
-        self.r = int(draw[(index+1)])
-        self.g = int(draw[(index+2)])
-        self.b = int(draw[(index+3)])
+        self.r = float(draw[(index+1)])
+        self.g = float(draw[(index+2)])
+        self.b = float(draw[(index+3)])
     def drawing(self):
         print(self.r, self.g, self.b, "setrgbcolor")
 class linewidth:
