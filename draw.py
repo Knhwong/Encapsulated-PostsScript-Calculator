@@ -242,6 +242,9 @@ class sector:
         while self.angle2 > 360:
             r=self.angle2//360
             self.angle2=self.angle2-(r*360)
+        while self.angle1 > 360:
+             r=self.angle1//360
+             self.angle1=self.angle1-(r*360)        
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -264,6 +267,9 @@ class sector:
         while self.angle2 > 360:
             r=self.angle2//360
             self.angle2=self.angle2-(r*360)
+        while self.angle1 > 360:
+             r=self.angle1//360
+             self.angle1=self.angle1-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -506,7 +512,7 @@ def cal(stuff):
             variables[var]=range1
             variableholder.append(var)
             if range1 < range2:
-                holder=calalt(lol[(index+3):])+index+4
+                holder=calalt(lol[(index+4):])+index+4
                 lol.insert(holder, ")")
                 j=index+4
                 lol.insert(j, "group")
@@ -517,7 +523,7 @@ def cal(stuff):
                     variables[var]=range2
                     for x in result:
                         resultholder.append(x)
-                return holder, resultholder
+                return holder-1, resultholder
             elif range1 > range2:
                 indexreturn = calalt(lol[(index+3):])
                 return (indexreturn+3+index), '0'
