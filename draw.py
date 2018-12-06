@@ -239,6 +239,9 @@ class sector:
         while self.angle1 >= 360:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
+        while self.angle2 > 360:
+            r=self.angle2//360
+            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -258,6 +261,9 @@ class sector:
         while self.angle1 >= 360:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
+        while self.angle2 > 360:
+            r=self.angle2//360
+            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
