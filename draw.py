@@ -519,7 +519,7 @@ def cal(stuff):
                 index = index + holder + 1
             elif range1 > range2:
                     indexreturn = calalt(lol[(index+3):])
-                    return (indexreturn+4+index), '0'
+                    return (indexreturn+3+index), '0'
         else:
             draw1.append(lol[index])
         index= index+1
