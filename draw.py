@@ -505,7 +505,7 @@ def cal(stuff):
             variables[var]=range1
             variableholder.append(var)
             if range1 < range2:
-                holder=calalt(lol[(index+3):])+index+3
+                holder=calalt(lol[(index+3):])+index+4
                 lol.insert(holder, ")")
                 j=index+4
                 lol.insert(j, "group")
@@ -516,7 +516,7 @@ def cal(stuff):
                     variables[var]=range2
                     for x in result:
                         draw1.append(x)
-                index = index + holder + 2
+                index = holder + 2
             elif range1 > range2:
                     indexreturn = calalt(lol[(index+3):])
                     return (indexreturn+3+index), '0'
