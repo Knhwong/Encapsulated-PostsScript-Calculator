@@ -233,18 +233,13 @@ class sector:
         self.radius=float(draw[(index+3)])
         self.angle1=float(draw[(index+4)])
         self.angle2=float(draw[(index+5)])
-        while self.angle2 >= 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
-        while self.angle1 >= 360:
-            r=self.angle1//360
-            self.angle1=self.angle1-(r*360)
-        while self.angle2 > 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
+        #while self.angle2 >= 360:
+        #    r=self.angle2//360
+        #    self.angle2=self.angle2-(r*360)
         while self.angle1 > 360:
-             r=self.angle1//360
-             self.angle1=self.angle1-(r*360)        
+            self.angle1=self.angle1-(360%self.angle1)
+        while self.angle2 > 360:
+            self.angle2=self.angle2-(360%self.angle2)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -258,18 +253,10 @@ class sector:
     def rotation(self, rotate):
         self.angle1=self.angle1+math.degrees(rotate)
         self.angle2=self.angle2+math.degrees(rotate)
-        while self.angle2 >= 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
-        while self.angle1 >= 360:
-            r=self.angle1//360
-            self.angle1=self.angle1-(r*360)
-        while self.angle2 > 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
         while self.angle1 > 360:
-             r=self.angle1//360
-             self.angle1=self.angle1-(r*360)
+            self.angle1=self.angle1-(360%self.angle1)
+        while self.angle2 > 360:
+            self.angle2=self.angle2-(360%self.angle2)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
