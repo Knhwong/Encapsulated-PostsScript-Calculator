@@ -362,9 +362,6 @@ def postfixer(draw1):
             resultpost.append(pointer)
         elif u == "rotate":
             rotate=(float(draw[-1]))
-            if abs(rotate) > 360:
-                r=rotate//360
-                rotate=rotate-(r*360)
             rotate=math.radians(rotate)
             for index2 in draw[1:-1]:
                 final[index2].rotation(rotate)
@@ -498,7 +495,7 @@ def cal(stuff):
             var=(lol[(index+1)])
             variables[var]=range1
             variableholder.append(var)
-            if range1 < range2:
+            if range1 <= range2:
                 holder=calalt(lol[(index+3):])+index+4
                 lol.insert(holder, ")")
                 j=index+4
