@@ -349,11 +349,8 @@ def postfixer(draw1):
             holder=math.sin(holder)
             resultpost.append(holder)
         elif u == ":=":
-            if draw[(index+2)].isidentifier() == True:
-                variables[(draw[(index+1)])] = draw[(index+2)]
-                variableholder.append(draw[(index+1)])
-            else:
-                resultpost.append('wat')
+            variables[(draw[(index+1)])] = draw[(index+2)]
+            variableholder.append(draw[(index+1)])
         elif u == "color":
             pointer=random.randint(1111,22222)
             final[pointer]=color(draw, index)
