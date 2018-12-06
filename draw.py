@@ -239,9 +239,6 @@ class sector:
         while self.angle1 >= 360:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
-        while self.angle2 > 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -261,9 +258,6 @@ class sector:
         while self.angle1 >= 360:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
-        while self.angle2 > 360:
-            r=self.angle2//360
-            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -302,9 +296,9 @@ class filledsector(sector):
         print("fill")
 class color:
     def __init__(self, draw, index):
-        self.r = float(draw[(index+1)])
-        self.g = float(draw[(index+2)])
-        self.b = float(draw[(index+3)])
+        self.r = int(draw[(index+1)])
+        self.g = int(draw[(index+2)])
+        self.b = int(draw[(index+3)])
     def drawing(self):
         print(self.r, self.g, self.b, "setrgbcolor")
 class linewidth:
@@ -355,8 +349,11 @@ def postfixer(draw1):
             holder=math.sin(holder)
             resultpost.append(holder)
         elif u == ":=":
-            variables[(draw[(index+1)])] = draw[(index+2)]
-            variableholder.append(draw[(index+1)])
+            if draw[(index+2)].isidentifier() == True:
+                variables[(draw[(index+1)])] = draw[(index+2)]
+                variableholder.append(draw[(index+1)])
+            else:
+                resultpost.append('wat')
         elif u == "color":
             pointer=random.randint(1111,22222)
             final[pointer]=color(draw, index)
