@@ -516,7 +516,7 @@ def cal(stuff):
                     variables[var]=range2
                     for x in result:
                         draw1.append(x)
-                index = index + holder + 2
+                index = index + holder + 1
             elif range1 > range2:
                     indexreturn = calalt(lol[(index+3):])
                     return (indexreturn+3+index), '0'
