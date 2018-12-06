@@ -240,8 +240,8 @@ class sector:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
         while self.angle2 > 360:
-            r=angle2//360
-            angle2=angle2-(r*360)
+            r=self.angle2//360
+            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -262,8 +262,8 @@ class sector:
             r=self.angle1//360
             self.angle1=self.angle1-(r*360)
         while self.angle2 > 360:
-            r=angle2//360
-            angle2=angle2-(r*360)
+            r=self.angle2//360
+            self.angle2=self.angle2-(r*360)
         while self.angle2 < 0:
             self.angle2 = self.angle2 + 360
         while self.angle1 < 0:
@@ -534,8 +534,8 @@ def calalt(lol):
             index =  index + indexreturn
         elif lol[index] == ")":
             return (index)
-        index = index +1 
-        
+        index = index +1
+
 
 
 stuff = sys.stdin.read()
