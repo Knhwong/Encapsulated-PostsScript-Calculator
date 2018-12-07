@@ -8,7 +8,7 @@ variable=0
 variableholder=[]
 final={}
 drawer=[]
-
+belsin=1
 
 class line:
     def __init__(self, draw, index):
@@ -348,8 +348,9 @@ def postfixer(draw1):
             holder=math.sin(holder)
             resultpost.append(holder)
         elif u == ":=":
-            variables[(draw[(index+1)])] = draw[(index+2)]
-            variableholder.append(draw[(index+1)])
+            if draw[(index+1)].isidentifier() == True:
+                variables[(draw[(index+1)])] = draw[(index+2)]
+                variableholder.append(draw[(index+1)])
         elif u == "color":
             pointer=random.randint(1111,22222)
             final[pointer]=color(draw, index)
