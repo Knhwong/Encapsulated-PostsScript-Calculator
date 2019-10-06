@@ -2,6 +2,9 @@ import sys
 import math
 import random
 import pdb
+#Written by Lear, first real complex script.
+
+
 printing=[]
 variables={}
 variable=0
@@ -10,6 +13,9 @@ final={}
 drawer=[]
 belsin=1
 
+
+#Class code here, alot of redundant code even with inheritance, but unique operations forces me to do this. Main functions define the actual translation of input
+#into printed output.
 class line:
     def __init__(self, draw, index):
         self.linex=float(draw[(index+1)])
@@ -29,7 +35,7 @@ class line:
         self.linex=self.linex+translatex
         self.liney=self.liney+translatey
         self.linex1=self.linex1+translatex
-        self.liney1=self.liney1+translatey
+        self.liney1=self.liney1+translateycd
     def scale(self, scale):
         self.linex=self.linex * scale
         self.liney=self.liney * scale
@@ -316,6 +322,8 @@ def postfixer(draw1):
     scale=1
     pointer=0
     holder=0
+    #Global variables are bad, but with a 2 week deadline and the complexity I considered correctness over "good code".
+    #Global vairables were used to circumvent the large amount of recursive scopes without needing to return something, thus massively reducing complexity
     global jarjar
     global larlar
     global variables
@@ -482,15 +490,19 @@ def cal(stuff):
     global drawer
     while index < len(lol):
         jarjar=lol[index]
+        #( Means to go into scope, thus "jumping" into the compound expression and executing the code within
         if lol[index] == "(":
             indexreturn, result =cal(lol[index:])
+            #Since we jumped in, we needed to go "out" at the end of the expression, thus cal returns the correct index. It was a pain trying to calculate this.
             index = index + indexreturn
             for x in result:
                 draw1.append(x)
         elif lol[index] == ")":
+            #Exiting the scope into the greater equation
             result = postfixer(draw1)
             return index, result
         elif lol[index] == "for":
+            #Professor added a for loop for the lolz...
             range1=int(lol[(index+2)])
             range2=int(lol[(index+3)])
             var=(lol[(index+1)])
@@ -528,7 +540,7 @@ def calalt(lol):
         index = index +1
 
 
-
+#Sorry about the variable names, I was getting pretty fustrated in trying to get past all the test cases
 stuff = sys.stdin.read()
 stuff = stuff.replace("(", " ( ")
 stuff = stuff.replace(")", " ) ")
